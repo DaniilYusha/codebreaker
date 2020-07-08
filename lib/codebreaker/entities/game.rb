@@ -19,9 +19,9 @@ module Codebreaker
     end
 
     def take_hint
-      return nil if @difficulty.hints_num.zero?
+      return nil if @difficulty.current_hints.zero?
 
-      @difficulty.hints_num -= 1
+      @difficulty.current_hints -= 1
       index = rand(@hints_list.size)
       digit = @hints_list[index]
       @hints_list.delete_at index
@@ -33,7 +33,7 @@ module Codebreaker
 
       user_code_array = guess.split('').map(&:to_i)
       validate_guess user_code_array
-      @difficulty.attempts_num -= 1
+      @difficulty.current_attempts -= 1
       return WIN if win? user_code_array
 
       @secret_code_clone = @secret_code.clone
@@ -53,7 +53,7 @@ module Codebreaker
     end
 
     def lose?
-      @difficulty.attempts_num.zero?
+      @difficulty.current_attempts.zero?
     end
 
     def win?(user_code_array)

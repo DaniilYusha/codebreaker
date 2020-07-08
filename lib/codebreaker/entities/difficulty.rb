@@ -3,8 +3,8 @@
 module Codebreaker
   # Difficulty class contains list of game difficulties
   class Difficulty
-    attr_reader :difficulty
-    attr_accessor :attempts_num, :hints_num
+    attr_reader :kind, :attempts, :hints
+    attr_accessor :current_attempts, :current_hints
 
     LIST = { easy: { attempts: 15, hints: 2 },
              medium: { attempts: 10, hints: 1 },
@@ -12,9 +12,11 @@ module Codebreaker
 
     def initialize(difficulty)
       validate difficulty
-      @difficulty = difficulty.to_sym
-      @attempts_num = LIST[@difficulty][:attempts]
-      @hints_num = LIST[@difficulty][:hints]
+      @kind = difficulty.to_sym
+      @attempts = LIST[@kind][:attempts]
+      @current_attempts = @attempts.clone
+      @hints = LIST[@kind][:hints]
+      @current_hints = @hints.clone
     end
 
     private
