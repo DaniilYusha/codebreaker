@@ -7,5 +7,4 @@ AllCops:
     - 'Rakefile'
     - 'bin/console'
     - 'spec/spec_helper.rb'
-    - 'spec/codebreaker_spec.rb'
     - 'lib/codebreaker/version.rb'
