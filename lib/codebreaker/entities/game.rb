@@ -48,11 +48,9 @@ module Codebreaker
       attempts_used = attempts_total - @difficulty.current_attempts
       hints_total = @difficulty.hints
       hints_used = hints_total - @difficulty.current_hints
-      {
-        name: name, difficulty: difficulty,
+      { name: name, difficulty: difficulty,
         attempts_total: attempts_total, attempts_used: attempts_used,
-        hints_total: hints_total, hints_used: hints_used
-      }
+        hints_total: hints_total, hints_used: hints_used }
     end
 
     private
