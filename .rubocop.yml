@@ -6,5 +6,4 @@ AllCops:
     - 'readme.md'
     - 'Rakefile'
     - 'bin/console'
-    - 'spec/spec_helper.rb'
     - 'lib/codebreaker/version.rb'
