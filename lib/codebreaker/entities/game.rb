@@ -4,6 +4,7 @@ module Codebreaker
   # Game class contains game scripts
   class Game
     include Validator
+    include FileLoader
     attr_reader :user, :difficulty, :secret_code, :hints_list
 
     WIN = :win
@@ -41,12 +42,12 @@ module Codebreaker
     end
 
     def pack_game_data
-      name = user.name
-      difficulty = difficulty.kind
-      attempts_total = difficulty.attempts
-      attempts_used = attempts_total - difficulty.current_attempts
-      hints_total = difficulty.hints
-      hints_used = hints_total - difficulty.current_hints
+      name = @user.name
+      difficulty = @difficulty.kind.to_s
+      attempts_total = @difficulty.attempts
+      attempts_used = attempts_total - @difficulty.current_attempts
+      hints_total = @difficulty.hints
+      hints_used = hints_total - @difficulty.current_hints
       {
         name: name, difficulty: difficulty,
         attempts_total: attempts_total, attempts_used: attempts_used,
