@@ -2,5 +2,9 @@
 
 module Codebreaker
   # ShortNameError class called when user name too short
-  class ShortNameError < StandardError; end
+  class ShortNameError < StandardError
+    def message
+      'Name is too short'
+    end
+  end
 end
