@@ -3,26 +3,35 @@
 module Codebreaker
   # User class contains user name field
   class User
-    attr_reader :name
+    include Validator
+    attr_reader :name, :errors
 
     NAME_MIN_LENGTH = 3
     NAME_MAX_LENGTH = 20
 
     def initialize(name)
-      validate name
       @name = name
+      @errors = []
     end
 
     private
 
-    def validate_name(name)
-      raise NameIsNotStringError unless name.is_a? String
-      raise ShortNameError, "Name should be no less than #{NAME_MIN_LENGTH} symbols" if name.length < NAME_MIN_LENGTH
-      raise LongNameError, "Name should be no more than #{NAME_MAX_LENGTH} symbols" if name.length > NAME_MAX_LENGTH
+    def validate!
+      validate_name_class
+      validate_name_min_length if @errors.empty?
+      validate_name_max_length if @errors.empty?
     end
 
-    def validate(name)
-      validate_name name
+    def validate_name_class
+      @errors << NameIsNotStringError unless @name.is_a? String
+    end
+
+    def validate_name_min_length
+      @errors << ShortNameError if @name.length < NAME_MIN_LENGTH
+    end
+
+    def validate_name_max_length
+      @errors << LongNameError if @name.length > NAME_MAX_LENGTH
     end
   end
 end
