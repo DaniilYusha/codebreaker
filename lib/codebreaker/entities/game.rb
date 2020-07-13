@@ -5,6 +5,7 @@ module Codebreaker
   class Game
     include Validator
     include FileLoader
+    include Core
     attr_reader :user, :difficulty, :secret_code, :hints_list
 
     WIN = :win
@@ -15,7 +16,7 @@ module Codebreaker
 
       @user = user
       @difficulty = difficulty
-      @secret_code = Core.new.generate_secret_code
+      @secret_code = generate_secret_code
       @hints_list = @secret_code.clone
     end
 
@@ -38,7 +39,7 @@ module Codebreaker
       return WIN if win? user_code_array
 
       @secret_code_clone = @secret_code.clone
-      Core.new.calculate_matches @secret_code_clone, user_code_array
+      calculate_matches @secret_code_clone, user_code_array
     end
 
     def pack_game_data
@@ -56,8 +57,8 @@ module Codebreaker
     private
 
     def validate_guess(guess_array)
-      raise DigitsCountError unless guess_array.count == Core::DIGITS_NUM
-      raise DigitRangeError unless guess_array.all? { |digit| digit.between? Core::MIN_CODE_NUM, Core::MAX_CODE_NUM }
+      raise DigitsCountError unless guess_array.count == DIGITS_NUM
+      raise DigitRangeError unless guess_array.all? { |digit| digit.between? MIN_CODE_NUM, MAX_CODE_NUM }
     end
 
     def validate(user, difficulty)
