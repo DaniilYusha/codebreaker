@@ -2,7 +2,7 @@
 
 module Codebreaker
   # Core class performs data calculations and generation
-  class Core
+  module Core
     MIN_CODE_NUM = 1
     MAX_CODE_NUM = 6
     DIGITS_NUM = 4
