@@ -6,5 +6,10 @@ module Codebreaker
     def compare_classes(class_name, expected_class)
       raise ArgumentError, "Expected class #{expected_class}" unless class_name == expected_class
     end
+
+    def valid?
+      validate!
+      @errors.empty?
+    end
   end
 end
