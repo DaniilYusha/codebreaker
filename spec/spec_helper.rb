@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 require 'simplecov'
-require 'bundler/setup'
-require 'codebreaker'
-
 SimpleCov.start
 SimpleCov.minimum_coverage 95
+require 'bundler/setup'
+require 'codebreaker'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
