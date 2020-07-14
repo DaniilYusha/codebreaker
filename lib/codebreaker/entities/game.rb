@@ -6,7 +6,7 @@ module Codebreaker
     include Validator
     include FileLoader
     include Core
-    attr_reader :user, :difficulty, :secret_code, :hints_list
+    attr_reader :user, :difficulty, :secret_code, :hints_list, :errors
 
     WIN = :win
     LOSE = :lose
@@ -18,6 +18,7 @@ module Codebreaker
       @difficulty = difficulty
       @secret_code = generate_secret_code
       @hints_list = @secret_code.clone
+      @errors = []
     end
 
     def take_hint
@@ -61,9 +62,9 @@ module Codebreaker
       raise DigitRangeError unless guess_array.all? { |digit| digit.between? MIN_CODE_NUM, MAX_CODE_NUM }
     end
 
-    def validate(user, difficulty)
-      compare_classes user.class, User
-      compare_classes difficulty.class, Difficulty
+    def validate!
+      compare_classes @user.class, User
+      compare_classes @difficulty.class, Difficulty
     end
 
     def lose?
@@ -72,6 +73,10 @@ module Codebreaker
 
     def win?(user_code_array)
       user_code_array == @secret_code
+    end
+
+    def validate_user
+      @errors << ExpectedUserInstanceError unless @user.class == Codebreaker::User
     end
   end
 end
