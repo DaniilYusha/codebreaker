@@ -3,6 +3,7 @@
 module Codebreaker
   # Difficulty class contains list of game difficulties
   class Difficulty
+    include Validator
     attr_reader :kind, :attempts, :hints, :errors
     attr_accessor :current_attempts, :current_hints
 
