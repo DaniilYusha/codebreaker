@@ -13,9 +13,9 @@ module Codebreaker
 
     def initialize(difficulty)
       @kind = difficulty.to_sym
-      @attempts = LIST[@kind][:attempts]
+      @attempts = LIST.dig(@kind, :attempts)
+      @hints = LIST.dig(@kind, :hints)
       @current_attempts = @attempts.clone
-      @hints = LIST[@kind][:hints]
       @current_hints = @hints.clone
       @errors = []
     end
