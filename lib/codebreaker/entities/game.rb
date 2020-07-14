@@ -12,8 +12,6 @@ module Codebreaker
     LOSE = :lose
 
     def initialize(user, difficulty)
-      validate user, difficulty
-
       @user = user
       @difficulty = difficulty
       @secret_code = generate_secret_code
@@ -62,17 +60,17 @@ module Codebreaker
       raise DigitRangeError unless guess_array.all? { |digit| digit.between? MIN_CODE_NUM, MAX_CODE_NUM }
     end
 
-    def validate!
-      compare_classes @user.class, User
-      compare_classes @difficulty.class, Difficulty
-    end
-
     def lose?
       @difficulty.current_attempts.zero?
     end
 
     def win?(user_code_array)
       user_code_array == @secret_code
+    end
+
+    def validate!
+      validate_user
+      validate_difficulty
     end
 
     def validate_user
