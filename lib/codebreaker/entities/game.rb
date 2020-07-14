@@ -70,7 +70,7 @@ module Codebreaker
 
     def validate!
       validate_user
-      validate_difficulty
+      validate_difficulty if @errors.empty?
     end
 
     def validate_user
