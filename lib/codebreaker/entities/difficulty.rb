@@ -21,12 +21,12 @@ module Codebreaker
 
     private
 
-    def validate_difficulty
-      @errors << DifficultyError unless LIST.include? @kind
+    def validate!
+      validate_difficulty
     end
 
-    def validate(difficulty)
-      validate_difficulty difficulty
+    def validate_difficulty
+      @errors << DifficultyError unless LIST.include? @kind
     end
   end
 end
