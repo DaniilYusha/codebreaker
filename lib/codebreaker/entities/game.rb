@@ -78,7 +78,7 @@ module Codebreaker
     end
 
     def validate_difficulty
-      @errors << ExpectedDifficultyInstanceError unless @user.class == Codebreaker::Difficulty
+      @errors << ExpectedDifficultyInstanceError unless @difficulty.class == Codebreaker::Difficulty
     end
   end
 end
