@@ -5,14 +5,6 @@ RSpec.describe Codebreaker::Game do
   let(:difficulty) { Codebreaker::Difficulty.new 'hell' }
   let(:game) { described_class.new user, difficulty }
   describe '.init' do
-    it 'raises ArgumentError when first argument is not User instance' do
-      expect { described_class.new('user', difficulty) }.to raise_error ArgumentError
-    end
-
-    it 'raises ArgumentError when second argument is not Difficult instance' do
-      expect { described_class.new(user, 'difficulty') }.to raise_error ArgumentError
-    end
-
     it 'saves a secret code' do
       expect(game.instance_variable_get(:@secret_code)).not_to be_empty
     end
