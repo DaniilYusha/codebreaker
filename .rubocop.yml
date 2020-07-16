@@ -1,5 +1,4 @@
 AllCops:
-  TargetRubyVersion: 2.7.1
   Exclude:
     - 'Gemfile'
     - 'Gemfile.lock'
