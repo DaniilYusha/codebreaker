@@ -1,9 +1,3 @@
 AllCops:
   Exclude:
-    - 'Gemfile'
-    - 'Gemfile.lock'
-    - '.gitignore'
-    - 'readme.md'
-    - 'Rakefile'
-    - 'bin/console'
-    - 'lib/codebreaker/version.rb'
+    - 'vendor/**/*'
