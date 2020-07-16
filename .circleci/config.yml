@@ -8,34 +8,31 @@ executors:
       - image: circleci/ruby:2.7.1
 
 caches:
-  - &bundle_cache_full v2-repo-{{ checksum "Gemfile.lock" }}
-  - &bundle_cache v2-repo-
+  - &bundle_cache v1-repo-{{ checksum "Gemfile.lock" }}
 
 commands:
-  defaults:
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - *bundle_cache_full
-            - *bundle_cache
-      - run: bundle install --path vendor/bundle
-      - save_cache:
-          key: *bundle_cache_full
-          paths:
-            - vendor/bundle
   run_linters:
     description: command to start linters
     steps:
       - run:
-          name: fasterer
-          command: bundle exec fasterer
+          name: rubocop
+          command: bundle exec rubocop
+  setup_environment:
+    steps:
+      - checkout
+      - restore_cache:
+          key: *bundle_cache
+      - run: bundle install --path vendor/bundle
+      - save_cache:
+          key: *bundle_cache
+          paths:
+            - vendor/bundle
 
 jobs:
   lintering:
     executor: default
     steps:
-      - defaults
+      - setup_environment
       - run_linters
 
 workflows:
