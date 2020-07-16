@@ -11,12 +11,6 @@ caches:
   - &bundle_cache v1-repo-{{ checksum "Gemfile.lock" }}
 
 commands:
-  run_linters:
-    description: command to start linters
-    steps:
-      - run:
-          name: rubocop
-          command: bundle exec rubocop
   setup_environment:
     steps:
       - checkout
@@ -27,6 +21,16 @@ commands:
           key: *bundle_cache
           paths:
             - vendor/bundle
+  run_linters:
+    description: command to start linters
+    steps:
+      - run:
+          name: rubocop
+          command: bundle exec rubocop
+      - run:
+          name: fasterer
+          command: bundle exec fasterer
+
 
 jobs:
   lintering:
