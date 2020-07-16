@@ -28,8 +28,8 @@ commands:
     description: command to start linters
     steps:
       - run:
-          name: rubocop
-          command: bundle exec rubocop
+          name: fasterer
+          command: bundle exec fasterer
 
 jobs:
   lintering:
