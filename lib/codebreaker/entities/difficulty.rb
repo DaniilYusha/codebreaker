@@ -7,14 +7,14 @@ module Codebreaker
     attr_reader :kind, :attempts, :hints, :errors
     attr_accessor :current_attempts, :current_hints
 
-    LIST = { easy: { attempts: 15, hints: 2 },
-             medium: { attempts: 10, hints: 1 },
-             hell: { attempts: 5, hints: 1 } }.freeze
+    DIFFICULTIES_LIST = { easy: { attempts: 15, hints: 2 },
+                          medium: { attempts: 10, hints: 1 },
+                          hell: { attempts: 5, hints: 1 } }.freeze
 
     def initialize(difficulty)
       @kind = difficulty.to_sym
-      @attempts = LIST.dig(@kind, :attempts)
-      @hints = LIST.dig(@kind, :hints)
+      @attempts = DIFFICULTIES_LIST.dig(@kind, :attempts)
+      @hints = DIFFICULTIES_LIST.dig(@kind, :hints)
       @current_attempts = @attempts.clone
       @current_hints = @hints.clone
       @errors = []
@@ -27,7 +27,7 @@ module Codebreaker
     end
 
     def validate_difficulty
-      @errors << DifficultyError unless LIST.include? @kind
+      @errors << DifficultyError unless DIFFICULTIES_LIST.include? @kind
     end
   end
 end

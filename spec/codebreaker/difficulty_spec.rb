@@ -24,9 +24,9 @@ RSpec.describe Codebreaker::Difficulty do
 
   describe 'check Difficulty constants' do
     it 'check content of LIST constant' do
-      expect(described_class::LIST).to eq({ easy: { attempts: 15, hints: 2 },
-                                            medium: { attempts: 10, hints: 1 },
-                                            hell: { attempts: 5, hints: 1 } })
+      expect(described_class::DIFFICULTIES_LIST).to eq({ easy: { attempts: 15, hints: 2 },
+                                                         medium: { attempts: 10, hints: 1 },
+                                                         hell: { attempts: 5, hints: 1 } })
     end
   end
 end
