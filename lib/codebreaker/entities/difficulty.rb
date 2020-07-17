@@ -15,8 +15,8 @@ module Codebreaker
       @kind = difficulty.to_sym
       @attempts = DIFFICULTIES_LIST.dig(@kind, :attempts)
       @hints = DIFFICULTIES_LIST.dig(@kind, :hints)
-      @current_attempts = @attempts
-      @current_hints = @hints
+      @current_attempts = @attempts.clone
+      @current_hints = @hints.clone
       @errors = []
     end
 
