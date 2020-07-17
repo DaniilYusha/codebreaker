@@ -25,15 +25,14 @@ module Codebreaker
     end
 
     def pack_game_data
-      name = @user.name
-      difficulty = @difficulty.kind.to_s
-      attempts_total = @difficulty.attempts
-      attempts_used = attempts_total - @difficulty.current_attempts
-      hints_total = @difficulty.hints
-      hints_used = hints_total - @difficulty.current_hints
-      { name: name, difficulty: difficulty,
-        attempts_total: attempts_total, attempts_used: attempts_used,
-        hints_total: hints_total, hints_used: hints_used }
+      {
+        name: @user.name,
+        difficulty: @difficulty.kind.to_s,
+        attempts_total: @difficulty.attempts,
+        attempts_used: @difficulty.attempts - @difficulty.current_attempts,
+        hints_total: @difficulty.hints,
+        hints_used: @difficulty.hints - @difficulty.current_hints
+      }
     end
 
     private
