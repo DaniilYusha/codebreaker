@@ -11,11 +11,11 @@ module Codebreaker
       DIGITS_NUM.times.map { rand(MIN_CODE_NUM..MAX_CODE_NUM) }
     end
 
-    def calculate_matches(secret_code, user_code_array)
+    def calculate_matches(user_code_array)
       @exact_mathes = 0
       @inexact_matches = 0
-      secret_code.zip(user_code_array).each do |secret_digit, user_digit|
-        next unless secret_code.include? user_digit
+      @secret_code_copy.zip(user_code_array).each do |secret_digit, user_digit|
+        next unless @secret_code_copy.include? user_digit
 
         next add_digit_match user_digit, true if secret_digit == user_digit
 
