@@ -37,8 +37,8 @@ module Codebreaker
       @difficulty.current_attempts -= 1
       return WIN if win? user_code_array
 
-      @secret_code_clone = @secret_code.clone
-      calculate_matches @secret_code_clone, user_code_array
+      @secret_code_copy = @secret_code.clone
+      calculate_matches @secret_code_copy, user_code_array
     end
 
     private
