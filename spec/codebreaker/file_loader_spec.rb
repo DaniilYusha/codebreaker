@@ -2,7 +2,7 @@
 
 RSpec.describe Codebreaker::FileLoader do
   let(:game) { Codebreaker::Game.new Codebreaker::User.new('Daniil'), Codebreaker::Difficulty.new('hell') }
-  let(:path) { './lib/codebreaker/db/test.yaml' }
+  let(:path) { './lib/codebreaker/test.yaml' }
   describe '#store' do
     after(:each) { File.delete(path) }
 
