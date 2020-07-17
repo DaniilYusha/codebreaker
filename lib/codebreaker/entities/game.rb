@@ -15,7 +15,7 @@ module Codebreaker
       @user = user
       @difficulty = difficulty
       @secret_code = generate_secret_code
-      @hints_list = @secret_code.clone
+      @hints_list = @secret_code
       @errors = []
     end
 
