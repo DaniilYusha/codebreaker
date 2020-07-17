@@ -17,9 +17,9 @@ module Codebreaker
       secret_code.zip(user_code_array).each do |secret_digit, user_digit|
         next unless secret_code.include? user_digit
 
-        next add_digit_match secret_code, user_digit, true if secret_digit == user_digit
+        next add_digit_match user_digit, true if secret_digit == user_digit
 
-        add_digit_match secret_code, user_digit
+        add_digit_match user_digit
       end
       { exact_mathes: @exact_mathes, inexact_matches: @inexact_matches }
     end
@@ -38,9 +38,9 @@ module Codebreaker
 
     private
 
-    def add_digit_match(secret_code, user_digit, exactness = false)
+    def add_digit_match(user_digit, exactness = false)
       exactness ? @exact_mathes += 1 : @inexact_matches += 1
-      secret_code.delete_at secret_code.index user_digit
+      @secret_code_copy.delete_at @secret_code_copy.index user_digit
     end
   end
 end
