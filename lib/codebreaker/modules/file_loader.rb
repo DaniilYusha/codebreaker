@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module Codebreaker
-  # Module FileLoader contains methods for data saving and loading
   module FileLoader
     def store(path, data)
       statistics = File.exist?(path) && !File.zero?(path) ? YAML.load_file(path) : []

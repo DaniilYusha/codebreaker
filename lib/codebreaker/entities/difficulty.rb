@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module Codebreaker
-  # Difficulty class contains list of game difficulties
   class Difficulty
     include Validator
     attr_reader :kind, :attempts, :hints, :errors

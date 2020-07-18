@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module Codebreaker
-  # Game class contains game scripts
   class Game
     include Validator
     include FileLoader

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module Codebreaker
-  # User class contains user name field
   class User
     include Validator
     attr_reader :name, :errors

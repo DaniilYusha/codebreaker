@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module Codebreaker
-  # Core class performs data calculations and generation for Game class
   module Core
     MIN_CODE_NUM = 1
     MAX_CODE_NUM = 6
