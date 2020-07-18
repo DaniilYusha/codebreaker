@@ -49,7 +49,7 @@ module Codebreaker
     end
 
     def win?(user_code)
-      user_code.to_i == secret_code.join
+      user_code == secret_code.join
     end
 
     def validate!
