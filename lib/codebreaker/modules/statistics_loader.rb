@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Codebreaker
-  module FileLoader
+  module StatisticsLoader
     def store(path, data)
       statistics = File.exist?(path) && !File.zero?(path) ? YAML.load_file(path) : []
       statistics << data

@@ -3,7 +3,7 @@
 module Codebreaker
   class Game
     include Validator
-    include FileLoader
+    include StatisticsLoader
     include Core
     attr_reader :user, :difficulty, :secret_code, :hints_list, :errors
 

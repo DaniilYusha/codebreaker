@@ -15,7 +15,7 @@ require_relative 'codebreaker/errors/expected_user_instance_error'
 
 require_relative 'codebreaker/modules/core'
 require_relative 'codebreaker/modules/validator'
-require_relative 'codebreaker/modules/file_loader'
+require_relative 'codebreaker/modules/statistics_loader'
 
 require_relative 'codebreaker/entities/difficulty'
 require_relative 'codebreaker/entities/game'
