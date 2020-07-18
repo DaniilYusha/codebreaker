@@ -20,7 +20,7 @@ module Codebreaker
 
         add_digit_match user_digit
       end
-      { exact_mathes: @exact_mathes, inexact_matches: @inexact_matches }
+      matches
     end
 
     def pack_game_data
@@ -39,6 +39,13 @@ module Codebreaker
     def add_digit_match(user_digit, exactness = false)
       exactness ? @exact_mathes += 1 : @inexact_matches += 1
       @secret_code_copy.delete_at @secret_code_copy.index user_digit
+    end
+
+    def matches
+      {
+        exact_mathes: @exact_mathes,
+        inexact_matches: @inexact_matches
+      }
     end
   end
 end
