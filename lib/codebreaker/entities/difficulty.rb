@@ -12,10 +12,10 @@ module Codebreaker
 
     def initialize(difficulty)
       @kind = difficulty.to_sym
-      @attempts = DIFFICULTIES_LIST.dig(@kind, :attempts)
-      @hints = DIFFICULTIES_LIST.dig(@kind, :hints)
-      @current_attempts = @attempts.clone
-      @current_hints = @hints.clone
+      @attempts = DIFFICULTIES_LIST.dig(kind, :attempts)
+      @hints = DIFFICULTIES_LIST.dig(kind, :hints)
+      @current_attempts = attempts.clone
+      @current_hints = hints.clone
       @errors = []
     end
 
@@ -26,7 +26,7 @@ module Codebreaker
     end
 
     def validate_difficulty
-      @errors << DifficultyError unless DIFFICULTIES_LIST.include? @kind
+      errors << DifficultyError unless DIFFICULTIES_LIST.include? kind
     end
   end
 end
