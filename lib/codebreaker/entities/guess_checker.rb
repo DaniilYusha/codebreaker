@@ -40,7 +40,7 @@ module Codebreaker
 
     def matches
       {
-        exact_mathes: @exact_matches,
+        exact_matches: @exact_matches,
         inexact_matches: @inexact_matches
       }
     end
