@@ -6,11 +6,6 @@ RSpec.describe Codebreaker::Game do
   let(:game) { described_class.new user, difficulty }
 
   describe '#take_hint' do
-    it 'returns nil when hints count equal to zero' do
-      difficulty.instance_variable_set(:@current_hints, 0)
-      expect(game.take_hint).to eq nil
-    end
-
     it 'returns Integer' do
       expect(game.take_hint.class).to eq Integer
     end

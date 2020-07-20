@@ -8,8 +8,6 @@ module Codebreaker
     MIN_CODE_NUM = 1
     MAX_CODE_NUM = 6
     DIGITS_NUM = 4
-    WIN = :win
-    LOSE = :lose
 
     def initialize(user, difficulty)
       @user = user
@@ -20,8 +18,6 @@ module Codebreaker
     end
 
     def take_hint
-      return nil if difficulty.current_hints.zero?
-
       difficulty.current_hints -= 1
       index = rand(hints_list.size)
       digit = hints_list[index]
@@ -30,11 +26,7 @@ module Codebreaker
     end
 
     def check_attempt(guess)
-      return LOSE if lose?
-
       difficulty.current_attempts -= 1
-      return WIN if win? guess
-
       GuessChecker.new(secret_code.clone, guess).check
     end
 
@@ -45,18 +37,22 @@ module Codebreaker
       @difficulty.current_hints = @difficulty.hints.clone
     end
 
-    private
-
-    def generate_secret_code
-      DIGITS_NUM.times.map { rand(MIN_CODE_NUM..MAX_CODE_NUM) }
-    end
-
     def lose?
       difficulty.current_attempts.zero?
     end
 
     def win?(user_code)
       user_code == secret_code.join
+    end
+
+    def no_hints?
+      difficulty.current_hints.zero?
+    end
+
+    private
+
+    def generate_secret_code
+      DIGITS_NUM.times.map { rand(MIN_CODE_NUM..MAX_CODE_NUM) }
     end
 
     def validate!

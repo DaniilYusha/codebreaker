@@ -16,18 +16,5 @@ RSpec.describe Codebreaker::Game do
     it 'each hash value is an Integer' do
       expect(game.check_attempt(user_code).each_value.all?(Integer)).to be true
     end
-
-    context 'when current_attempts equal to zero' do
-      it 'returns :lose' do
-        game.difficulty.instance_variable_set(:@current_attempts, 0)
-        expect(game.check_attempt(user_code)).to eq :lose
-      end
-    end
-
-    context 'when user code equal to secret code' do
-      it 'returns :win' do
-        expect(game.check_attempt(game.secret_code.join)).to eq :win
-      end
-    end
   end
 end

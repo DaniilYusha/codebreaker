@@ -13,12 +13,5 @@ RSpec.describe Codebreaker::Game do
     it 'check DIGITS_NUM constant' do
       expect(described_class::DIGITS_NUM).to eq 4
     end
-    it 'check WIN constant' do
-      expect(described_class::WIN).to eq :win
-    end
-
-    it 'check LOSE constant' do
-      expect(described_class::LOSE).to eq :lose
-    end
   end
 end
