@@ -38,6 +38,13 @@ module Codebreaker
       GuessChecker.new(secret_code.clone, guess).check
     end
 
+    def new_game
+      secret_code = generate_secret_code
+      hints_list = secret_code.clone
+      difficulty.current_attempts = difficulty.attempts.clone
+      difficulty.current_hints = difficulty.hints.clone
+    end
+
     private
 
     def generate_secret_code
