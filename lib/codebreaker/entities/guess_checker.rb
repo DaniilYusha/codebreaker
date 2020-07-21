@@ -30,7 +30,7 @@ module Codebreaker
     end
 
     def check_exact
-      @exact_matches = secret_code.size - @comparison.reject! { |digits_pair| digits_pair[0] == digits_pair[1] }.size
+      @exact_matches = secret_code.size - @comparison.delete_if { |digits_pair| digits_pair[0] == digits_pair[1] }.size
     end
 
     def check_inexact
