@@ -7,6 +7,7 @@ module Codebreaker
     def initialize(secret_code, user_code)
       @secret_code = secret_code
       @user_code = user_code
+      @comparison = secret_code.zip user_code_to_arr
       @exact_matches = 0
       @inexact_matches = 0
     end
@@ -23,19 +24,22 @@ module Codebreaker
 
     private
 
-    def add_digit_match!(user_digit, exactness = false)
-      exactness ? @exact_matches += 1 : @inexact_matches += 1
-      secret_code.delete_at secret_code.index user_digit
+    def calculate_matches
+      check_exact
+      check_inexact
     end
 
-    def calculate_matches
-      secret_code.zip(user_code_to_arr).each do |secret_digit, user_digit|
-        next unless secret_code.include? user_digit
+    def check_exact
+      @exact_matches = secret_code.size - @comparison.reject! { |digits_pair| digits_pair[0] == digits_pair[1] }.size
+    end
 
-        next add_digit_match! user_digit, true if secret_digit == user_digit
-
-        add_digit_match! user_digit
+    def check_inexact
+      secret_code = @comparison.collect { |digits_pair| digits_pair[0] }
+      user_code = @comparison.collect { |digits_pair| digits_pair[1] }
+      selected_matches = user_code.collect do |user_digit|
+        secret_code.find_all { |secret_digit| secret_digit == user_digit }
       end
+      @inexact_matches = selected_matches.flatten.uniq.size
     end
 
     def matches
