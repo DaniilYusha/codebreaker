@@ -14,7 +14,7 @@ module Codebreaker
 
     def check
       calculate_matches
-      matches
+      compose_result
     end
 
     def self.validate(guess)
@@ -42,7 +42,7 @@ module Codebreaker
       @inexact_matches = selected_matches.flatten.uniq.size
     end
 
-    def matches
+    def compose_result
       {
         exact_matches: @exact_matches,
         inexact_matches: @inexact_matches
