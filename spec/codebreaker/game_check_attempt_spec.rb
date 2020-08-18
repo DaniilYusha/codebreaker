@@ -8,8 +8,8 @@ RSpec.describe Codebreaker::Game do
       expect(game.check_attempt('2456').class).to eq Hash
     end
 
-    it 'hash has two keys' do
-      expect(game.check_attempt('6163').size).to eq 2
+    it 'hash has three keys' do
+      expect(game.check_attempt('6163').size).to eq 3
     end
 
     it 'each hash value is an Integer' do

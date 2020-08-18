@@ -27,6 +27,7 @@ module Codebreaker
     def calculate_matches
       check_exact
       check_inexact
+      check_no_matches
     end
 
     def check_exact
@@ -42,10 +43,15 @@ module Codebreaker
       @inexact_matches = selected_matches.flatten.uniq.size
     end
 
+    def check_no_matches
+      @no_matches = Game::DIGITS_NUM - @exact_matches - @inexact_matches
+    end
+
     def compose_result
       {
         exact_matches: @exact_matches,
-        inexact_matches: @inexact_matches
+        inexact_matches: @inexact_matches,
+        no_matches: @no_matches
       }
     end
 
