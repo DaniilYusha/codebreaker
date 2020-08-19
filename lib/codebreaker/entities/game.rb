@@ -3,7 +3,7 @@
 module Codebreaker
   class Game
     include Validator
-    attr_reader :user, :difficulty, :secret_code, :hints_list, :errors
+    attr_reader :user, :difficulty, :secret_code, :hints_list, :errors, :date
 
     MIN_CODE_NUM = 1
     MAX_CODE_NUM = 6
@@ -15,6 +15,7 @@ module Codebreaker
       @secret_code = generate_secret_code
       @hints_list = secret_code.clone
       @errors = []
+      @date = Time.new
     end
 
     def take_hint

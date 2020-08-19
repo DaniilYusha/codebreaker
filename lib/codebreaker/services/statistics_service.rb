@@ -35,7 +35,8 @@ module Codebreaker
         attempts_total: game.difficulty.attempts,
         attempts_used: game.difficulty.attempts - game.difficulty.current_attempts,
         hints_total: game.difficulty.hints,
-        hints_used: game.difficulty.hints - game.difficulty.current_hints
+        hints_used: game.difficulty.hints - game.difficulty.current_hints,
+        date: game.date
       }
     end
   end
