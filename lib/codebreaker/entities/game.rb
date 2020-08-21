@@ -15,7 +15,7 @@ module Codebreaker
       @secret_code = generate_secret_code
       @hints_list = secret_code.clone
       @errors = []
-      @date = Time.now.strftime('%Y-%m-%d - %H:%M:%S')
+      @date = Time.new
     end
 
     def take_hint
