@@ -6,6 +6,9 @@
 /pkg/
 /spec/reports/
 /tmp/
+/lib/codebreaker/statistics.yaml
+/lib/codebreaker/index.rb
+/spec/codebreaker/test_spec.rb
 
 # rspec failure tracking
 .rspec_status
